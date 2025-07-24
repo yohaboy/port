@@ -1,14 +1,96 @@
-import React from "react";
+import React, { useState } from "react";
+import { useTheme } from "./ThemeContext";
+
+const NAV_LINKS = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Contact", href: "#contact" },
+];
 
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+
+  // Close menu and scroll smoothly
+  const handleNavClick = (href) => {
+    setMenuOpen(false);
+    const el = document.querySelector(href);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <header className="flex gap-4 px-8 py-8">
-      <nav className="space-x-8 ">
-      <a href="#home" className="text-sm text-teal-300 hover:text-white transition">Home</a>
-        <a href="#about" className="text-sm text-teal-300 hover:text-white transition">About</a>
-        <a href="#experience" className="text-sm text-teal-300 hover:text-white transition">Experience</a>
-        <a href="#contact" className="text-sm text-teal-300 hover:text-white transition">Contact</a>
-      </nav>
+    <header className="sticky top-0 z-30 w-full bg-white/80 dark:bg-neutral-900/80 border-b border-neutral-200 dark:border-neutral-800 transition-colors">
+      <div className="flex items-center justify-between px-8 py-4 max-w-6xl mx-auto">
+        {/* Logo/Initials */}
+        <div className="text-2xl font-extrabold text-cyan-600 dark:text-cyan-400 tracking-tight select-none">JZ</div>
+        {/* Desktop nav */}
+        <nav className="hidden md:flex gap-8">
+          {NAV_LINKS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="relative text-base font-semibold text-neutral-700 dark:text-neutral-200 hover:text-cyan-600 dark:hover:text-cyan-400 transition px-1"
+              onClick={e => {
+                e.preventDefault();
+                handleNavClick(item.href);
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        {/* Theme toggle button */}
+        <button
+          onClick={toggleTheme}
+          aria-label="Toggle theme"
+          className="ml-4 p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+        >
+          {theme === "dark" ? (
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.93l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" /></svg>
+          )}
+        </button>
+        {/* Burger menu for mobile */}
+        <button
+          className="md:hidden flex items-center justify-center w-10 h-10 rounded border border-neutral-200 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 ml-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          onClick={() => setMenuOpen((v) => !v)}
+        >
+          {/* Minimal burger icon */}
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" className="text-neutral-700 dark:text-neutral-200">
+            <rect y="5" width="24" height="2" rx="1" fill="currentColor" />
+            <rect y="11" width="24" height="2" rx="1" fill="currentColor" />
+            <rect y="17" width="24" height="2" rx="1" fill="currentColor" />
+          </svg>
+        </button>
+        {/* Mobile menu overlay */}
+        <div
+          className={`fixed inset-0 bg-black/30 z-30 transition-opacity duration-200 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+          onClick={() => setMenuOpen(false)}
+        />
+        {/* Mobile menu */}
+        <nav
+          className={`fixed top-0 right-0 h-full w-64 bg-white dark:bg-neutral-900 border-l border-neutral-200 dark:border-neutral-800 z-40 flex flex-col gap-6 pt-24 px-8 transition-transform duration-200 md:hidden ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        >
+          {NAV_LINKS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="text-lg font-semibold text-neutral-700 dark:text-neutral-200 hover:text-cyan-600 dark:hover:text-cyan-400 transition py-2 border-b border-neutral-200 dark:border-neutral-800"
+              onClick={e => {
+                e.preventDefault();
+                handleNavClick(item.href);
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
     </header>
   );
 } 

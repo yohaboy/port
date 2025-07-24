@@ -6,6 +6,7 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
+import { ThemeProvider } from "./components/ThemeContext";
 
 function SocialBar() {
   return (
@@ -28,12 +29,16 @@ function SocialBar() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-black text-white font-sans flex flex-col items-center justify-center">
-      <Header />
-      <Hero />
-      <About />
-      <Projects />
-      <Contact />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen w-full bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 font-sans">
+        <Header />
+        <main className="flex flex-col items-center justify-center w-full">
+          <Hero />
+          <About />
+          <Projects />
+          <Contact />
+        </main>
+      </div>
+    </ThemeProvider>
   );
 }

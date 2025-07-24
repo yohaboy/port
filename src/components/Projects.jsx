@@ -25,46 +25,45 @@ export default function Projects() {
   ];
 
   return (
-    <section className="px-8 md:px-32 py-16">
-      <h2 className="text-2xl font-bold text-teal-400 mb-8">Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <section id="projects" className="px-4 md:px-0 py-20 w-full flex flex-col items-center">
+      <h2 className="text-3xl font-bold text-neutral-900 dark:text-neutral-100 mb-10 tracking-tight">Projects</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-5xl">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="bg-[#0a192f] rounded-lg overflow-hidden border border-slate-700 shadow-md hover:shadow-lg hover:border-teal-400 transition-all duration-300"
+            className="relative bg-white dark:bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow flex flex-col min-h-[340px]"
           >
-            {/* Image */}
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-48 object-cover"
-            />
-
+            {/* Image (grayscale) */}
+            <div className="relative w-full h-40 overflow-hidden">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover scale-105 grayscale"
+              />
+            </div>
             {/* Content */}
-            <div className="p-4 flex flex-col justify-between h-full">
-              <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-              <p className="text-slate-300 text-sm mb-4">{project.description}</p>
-
+            <div className="p-6 flex flex-col flex-1 justify-between h-full">
+              <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-2">{project.title}</h3>
+              <p className="text-neutral-700 dark:text-neutral-300 text-base mb-4">{project.description}</p>
               {/* Tech stack icons */}
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-3 mb-4">
                 {project.tech.map((TechIcon, i) => (
                   <span
                     key={i}
-                    className="bg-slate-800 text-teal-400 p-2 rounded-full text-sm"
+                    className="bg-neutral-100 dark:bg-neutral-800 text-cyan-600 p-2 rounded-full text-lg shadow-sm"
                     title={TechIcon.displayName || ""}
                   >
-                    <TechIcon className="w-4 h-4" />
+                    <TechIcon className="w-5 h-5" />
                   </span>
                 ))}
               </div>
-
               {/* Links */}
-              <div className="flex space-x-4 mt-auto">
+              <div className="flex space-x-6 mt-auto">
                 <a
                   href={project.liveLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-teal-400 hover:text-teal-300 transition-colors text-lg"
+                  className="text-cyan-600 hover:text-cyan-800 dark:text-cyan-400 dark:hover:text-cyan-200 transition-colors text-2xl"
                 >
                   <FaExternalLinkAlt />
                 </a>
@@ -72,7 +71,7 @@ export default function Projects() {
                   href={project.githubLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-teal-400 hover:text-teal-300 transition-colors text-lg"
+                  className="text-cyan-600 hover:text-cyan-800 dark:text-cyan-400 dark:hover:text-cyan-200 transition-colors text-2xl"
                 >
                   <FaGithub />
                 </a>
