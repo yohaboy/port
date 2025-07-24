@@ -27,7 +27,7 @@ export default function Projects() {
         "An AI-powered food recommendation app that suggests meals based on mood, diet, serving size, and spice level, with estimated pricing for quick decisions.",
       image: "/assets/foodme.png",
       liveLink: "#",
-      githubLink: "#",
+      githubLink: "https://github.com/yohaboy/FoodME",
       tech: ["python","Django","React","DRF" , "Postgress" , "Tailwind", ,"OpenAI"],
     },
     {

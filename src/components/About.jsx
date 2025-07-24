@@ -24,6 +24,35 @@ export default function About() {
           </div>
         </div>
       </div>
+
+      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow p-10 max-w-2xl w-full flex flex-col items-center border border-neutral-200 dark:border-neutral-800 mt-8">
+        <h2 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-6 tracking-tight">
+          Skills
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 text-center">
+          {/* Frontend */}
+          <div>
+            <h3 className="text-cyan-600 font-semibold mb-2">Frontend</h3>
+            <p className="text-neutral-700 dark:text-neutral-300 text-sm">
+            React ,TypeScript , Tailwind CSS
+            </p>
+          </div>
+          {/* Backend */}
+          <div>
+            <h3 className="text-cyan-600 font-semibold mb-2">Backend</h3>
+            <p className="text-neutral-700 dark:text-neutral-300 text-sm">
+            Python, Django, FastAPI , PostgreSQL
+            </p>
+          </div>
+          {/* Tools */}
+          <div>
+            <h3 className="text-cyan-600 font-semibold mb-2">Tools and skills</h3>
+            <p className="text-neutral-700 dark:text-neutral-300 text-sm">
+              Git, Postman , Docker, Linux, REST API
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
   );
 } 
