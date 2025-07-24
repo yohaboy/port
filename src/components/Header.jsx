@@ -1,18 +1,15 @@
 import React, { useState } from "react";
-import { useTheme } from "./ThemeContext";
 
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
+  { label: "Experience", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
-  // Close menu and scroll smoothly
   const handleNavClick = (href) => {
     setMenuOpen(false);
     const el = document.querySelector(href);
@@ -23,9 +20,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-30 w-full bg-white/80 dark:bg-neutral-900/80 border-b border-neutral-200 dark:border-neutral-800 transition-colors">
-      <div className="flex items-center justify-between px-8 py-4 max-w-6xl mx-auto">
+      <div className="flex items-center justify-between md:justify-center px-8 py-4 max-w-6xl mx-auto">
         {/* Logo/Initials */}
-        <div className="text-2xl font-extrabold text-cyan-600 dark:text-cyan-400 tracking-tight select-none">JZ</div>
+        <div className="md:hidden text-2xl font-extrabold text-cyan-600 dark:text-cyan-400 tracking-tight select-none">JZ</div>
         {/* Desktop nav */}
         <nav className="hidden md:flex gap-8">
           {NAV_LINKS.map((item) => (
@@ -42,18 +39,6 @@ export default function Header() {
             </a>
           ))}
         </nav>
-        {/* Theme toggle button */}
-        <button
-          onClick={toggleTheme}
-          aria-label="Toggle theme"
-          className="ml-4 p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-        >
-          {theme === "dark" ? (
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.93l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" /></svg>
-          )}
-        </button>
         {/* Burger menu for mobile */}
         <button
           className="md:hidden flex items-center justify-center w-10 h-10 rounded border border-neutral-200 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 ml-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"

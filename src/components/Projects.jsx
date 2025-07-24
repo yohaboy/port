@@ -22,6 +22,15 @@ export default function Projects() {
       githubLink: "#",
       tech: [SiReact, SiFastapi, SiPython],
     },
+    {
+      title: "Chess Tactics Trainer",
+      description:
+        "AI-generated chess puzzles to train tactics. Built with React and FastAPI.",
+      image: "/images/chess.png",
+      liveLink: "#",
+      githubLink: "#",
+      tech: [SiReact, SiFastapi, SiPython],
+    },
   ];
 
   return (
