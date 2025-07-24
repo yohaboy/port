@@ -25,7 +25,7 @@ export default function Hero() {
       </h2>
       <div className="flex flex-col md:flex-row items-center gap-6 mb-8">
         <a
-          href="/John-Zee-Resume.pdf#"
+          href="/assets/john.pdf#"
           download
           className="px-8 py-3 bg-cyan-500 text-white font-bold rounded shadow hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
         >

@@ -18,7 +18,7 @@ export default function Contact() {
     const subject = `New Message from ${name}`;
     const body = `${message}`;
 
-    window.location.href = `mailto:yohannesgziaw0@gmail.com?subject=${encodeURIComponent(
+    window.location.href = `mailto:yohannesgziaw777@gmail.com?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
   };
