@@ -16,11 +16,11 @@ export default function About() {
         <div className="w-full flex flex-col gap-2 mt-6">
           <div className="flex items-center gap-3">
             <span className="w-2 h-2 rounded-full bg-cyan-500" />
-            <span className="text-neutral-600 dark:text-neutral-400 text-sm">2023–Present: Building at Telechannels</span>
+            <span className="text-neutral-600 dark:text-neutral-400 text-md">June 2025 - Present : CEO at Telechannels</span>
           </div>
           <div className="flex items-center gap-3">
             <span className="w-2 h-2 rounded-full bg-cyan-500" />
-            <span className="text-neutral-600 dark:text-neutral-400 text-sm">Fan of <span className="text-cyan-600">chess</span> & <span className="text-cyan-600">music</span></span>
+            <span className="text-neutral-600 dark:text-neutral-400 text-md">Fan of <span className="text-cyan-600">chess</span> & <span className="text-cyan-600">music</span></span>
           </div>
         </div>
       </div>

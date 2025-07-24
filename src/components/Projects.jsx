@@ -1,42 +1,68 @@
 import React from "react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { SiPython, SiDjango, SiReact, SiFastapi, SiTelegram } from "react-icons/si";
 
 export default function Projects() {
   const projects = [
     {
       title: "Telechannels Escrow Marketplace",
       description:
-        "A secure escrow marketplace built with Django, FastAPI, React, and TON SDK.",
-      image: "/images/telechannels.png",
+        "A secure escrow marketplace to buy and sell telegram channels and groups built on top of Ton blockchain.",
+      image: "/assets/Telechannels.png",
       liveLink: "https://www.telechannels.store",
-      githubLink: "https://github.com/your-repo",
-      tech: [SiPython, SiDjango, SiReact, SiFastapi, SiTelegram],
+      githubLink: "#",
+      tech: ["Python", "Django", "React","TON","telegram_api","Bot"],
     },
     {
-      title: "Chess Tactics Trainer",
+      title: "UNISA Research Management System",
       description:
-        "AI-generated chess puzzles to train tactics. Built with React and FastAPI.",
-      image: "/images/chess.png",
+        "A platform for tracking academic publications, researchers, and collaborations at the University of South Australia, with automated data fetching from CSV and advanced research analytics.",
+      image: "/assets/unisa.png",
       liveLink: "#",
-      githubLink: "#",
-      tech: [SiReact, SiFastapi, SiPython],
+      githubLink: "https://github.com/yohaboy/Research-csv",
+      tech: ["Python", "Django","Celery", "Redis", "Google Scholar", "ORCID"],
     },
     {
-      title: "Chess Tactics Trainer",
+      title: "FoodME 🍽️",
       description:
-        "AI-generated chess puzzles to train tactics. Built with React and FastAPI.",
-      image: "/images/chess.png",
+        "An AI-powered food recommendation app that suggests meals based on mood, diet, serving size, and spice level, with estimated pricing for quick decisions.",
+      image: "/assets/foodme.png",
       liveLink: "#",
       githubLink: "#",
-      tech: [SiReact, SiFastapi, SiPython],
+      tech: ["python","Django","React","DRF" , "Postgress" , "Tailwind", ,"OpenAI"],
     },
+    {
+      title: "Bookstore API 📚",
+      description:
+        "A RESTful API for managing books, authors, and orders, built with FastAPI for fast and efficient backend services.",
+      image: "/assets/bookstore.png",
+      liveLink: "#",
+      githubLink: "https://github.com/yohaboy/Bookstore",
+      tech: ["Python", "FastAPI", "JWT","SQLAlchemy", "PostgreSQL"],
+    },
+    {
+      title: "Design Blog 🎨",
+      description:
+        "A Dribbble-like platform where designers can share and showcase their creative work, built for posting, browsing, and engaging with design projects.",
+      image: "/assets/design.jpg",
+      liveLink: "#",
+      githubLink: "https://github.com/yohaboy/design_blog",
+      tech: ["Python", "Django", "Tailwind", "SQLite"],
+    },
+    
+        
   ];
 
   return (
-    <section id="projects" className="px-4 md:px-0 py-20 w-full flex flex-col items-center">
-      <h2 className="text-3xl font-bold text-neutral-900 dark:text-neutral-100 mb-10 tracking-tight">Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-5xl">
+    <section
+      id="projects"
+      className="px-4 md:px-0 py-20 w-full flex flex-col items-center"
+    >
+      <h2 className="text-3xl font-bold text-neutral-900 dark:text-neutral-100 mb-10 tracking-tight">
+        Featured Projects
+      </h2>
+
+      {/* Responsive Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-6xl">
         {projects.map((project, index) => (
           <div
             key={index}
@@ -50,37 +76,42 @@ export default function Projects() {
                 className="w-full h-full object-cover scale-105 grayscale"
               />
             </div>
+
             {/* Content */}
             <div className="p-6 flex flex-col flex-1 justify-between h-full">
-              <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-2">{project.title}</h3>
-              <p className="text-neutral-700 dark:text-neutral-300 text-base mb-4">{project.description}</p>
-              {/* Tech stack icons */}
-              <div className="flex flex-wrap gap-3 mb-4">
-                {project.tech.map((TechIcon, i) => (
+              <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
+                {project.title}
+              </h3>
+              <p className="text-neutral-700 dark:text-neutral-300 text-base mb-4">
+                {project.description}
+              </p>
+
+              {/* Tech stack as text */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.tech.map((tech, i) => (
                   <span
                     key={i}
-                    className="bg-neutral-100 dark:bg-neutral-800 text-cyan-600 p-2 rounded-full text-lg shadow-sm"
-                    title={TechIcon.displayName || ""}
+                    className="bg-neutral-100 dark:bg-neutral-800 text-cyan-600 px-3 py-1 rounded-full text-sm font-medium shadow-sm"
                   >
-                    <TechIcon className="w-5 h-5" />
+                    {tech}
                   </span>
                 ))}
               </div>
+
               {/* Links */}
               <div className="flex space-x-6 mt-auto">
                 <a
                   href={project.liveLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-cyan-600 hover:text-cyan-800 dark:text-cyan-400 dark:hover:text-cyan-200 transition-colors text-2xl"
+                  className="text-cyan-600 hover:text-cyan-800 dark:text-cyan-400 dark:hover:text-cyan-200 transition-colors text-xl"
                 >
                   <FaExternalLinkAlt />
                 </a>
                 <a
                   href={project.githubLink}
-                  target="_blank"
                   rel="noopener noreferrer"
-                  className="text-cyan-600 hover:text-cyan-800 dark:text-cyan-400 dark:hover:text-cyan-200 transition-colors text-2xl"
+                  className="text-cyan-600 hover:text-cyan-800 dark:text-cyan-400 dark:hover:text-cyan-200 transition-colors text-xl"
                 >
                   <FaGithub />
                 </a>
